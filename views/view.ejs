@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheet/style.css">
+</head>
+<body>
+    <div class="main">
+        <a href="http://localhost:3000/post">See all post</a>
+        <h2>Here is your post</h2><br>
+        <p>Post id:<%=post.id %> </p>
+        <div class="posts">
+            <h4>@<%= post.username %></h4><br>
+            <h5><%=post.content %></h5>
+        </div>
+    </div>
+</body>
+</html>

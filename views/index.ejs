@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All posts</title>
+    <link rel="stylesheet" href="/stylesheet/style.css">
+</head>
+<body>
+    <div class="main">
+    <h1>Quora Posts:</h1>
+    <hr>
+    <% posts.forEach((val)=>{ %>
+        <div class="posts">
+        <h4>@<%= val.username %></h4> <br>
+        <h5><%= val.content %></h5>
+        <a href="http://localhost:3000/post/<%=val.id%>">Details</a>
+    </div>
+        <hr>
+   <% }) %>
+    <br><br>
+   <a href="http://localhost:3000/post/new"> Create a new post</a>
+</div>
+</body>
+</html>
