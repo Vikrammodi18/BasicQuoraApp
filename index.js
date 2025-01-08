@@ -1,13 +1,16 @@
 const express = require('express')
 const path = require("path")
+const methodOverride = require("method-override")
 const { v4: uuidv4 } = require('uuid');
 
 
 const app = express()
 app.set("view engine","ejs")
+
+
 app.use(express.static(path.join(__dirname,"/public")))
 app.use(express.urlencoded({extended:true}))
-
+app.use(methodOverride('_method'))
 
 let posts=[
     {
@@ -35,7 +38,24 @@ app.get("/post/new",(req,res)=>{
 app.get("/post/:id",(req,res)=>{
     let {id} = req.params
     let post = posts.find((p) => id === p.id)
+    // console.log(post)
     res.render('view',{post})
+})
+
+app.get("/post/:id/edit",(req,res)=>{
+    let {id} = req.params
+    let post = posts.find((p) => id === p.id)
+    // console.log(post)
+    res.render('edit',{post})
+})
+
+app.patch("/post/:id",(req,res)=>{
+    let {id} = req.params
+    newContent = req.body.content
+   let post = posts.find((p)=> id === p.id)
+    post.content = newContent
+
+    res.redirect('/post')
 })
 app.post('/post',(req,res)=>{
     const {username,content} = req.body;
