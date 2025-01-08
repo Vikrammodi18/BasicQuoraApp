@@ -67,6 +67,13 @@ app.post('/post',(req,res)=>{
     posts.push(newpost)
     res.redirect('/post')
 })
+
+app.delete('/post/:id',(req,res)=>{
+    let {id} = req.params
+    posts = posts.filter((s)=> s.id != id)
+    res.redirect('/post')
+    
+})
 const PORT = 3000
 app.listen(PORT,()=>{
     console.log(`app getting stated at ${PORT}`)

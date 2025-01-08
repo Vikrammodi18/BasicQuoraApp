@@ -16,6 +16,9 @@
         <h5><%= val.content %></h5>
         <a href="http://localhost:3000/post/<%=val.id%>">Details</a>
         <a href="http://localhost:3000/post/<%=val.id%>/edit">Edit</a>
+        <form action="/post/<%=val.id%>?_method=DELETE" method="post" style="display: inline-block;">
+            <button>DELETE</button>
+        </form>
     </div>
         <hr>
    <% }) %>
